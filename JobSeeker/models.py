@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 import os
 
 def pathUpload(instance, filename):
-    full_filename = "profile-" + instance.jobseeker.user.username + "-" + filename
-    folder_name = instance.jobseeker.user.username
-    path = os.path.join('Job Seeker', folder_name)
-    return os.path.join(path, full_filename)
+    fullFilename = "profile-" + instance.jobseeker.user.username + "-" + filename
+    folderName = instance.jobseeker.user.username
+    path = os.path.join('Job Seeker', folderName)
+    return os.path.join(path, fullFilename)
 
 class JobSeeker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
@@ -26,7 +26,7 @@ class JobSeekerProfile(models.Model):
                 )
     gender       = models.CharField(max_length=6 ,choices=GENDER)
     age          = models.IntegerField()
-    phone_number = models.CharField(max_length=50 ,null=True ,blank=True)
+    phoneNumber = models.CharField(max_length=50 ,null=True ,blank=True)
     GRADE_CHOICE = (
                         ('dep' ,'دیپلم'),
                         ('bc', 'کارشناسی'),

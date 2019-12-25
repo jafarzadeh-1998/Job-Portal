@@ -1,0 +1,119 @@
+{% extends 'registrationBase.html' %}
+{% block title %}
+  SignUp
+{% endblock title %}
+{% load static %}
+{% block form %}
+<section class="login-wrapper">
+    <div class="container">
+        <div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+            <ul class="filter-list">
+                <li>
+                    <input id="checkbox-1" class="checkbox-custom" name="userType" type="radio" checked="">
+                    <label for="checkbox-1" class="part-time checkbox-custom-label">Job Seeker</label>
+                </li>
+                
+                <li>
+                    <input id="checkbox-2" class="checkbox-custom" name="userType" type="radio">
+                    <label for="checkbox-2" class="full-time checkbox-custom-label">Company</label>
+                </li>
+            </ul>
+            <img class="img-responsive" alt="logo" src="{% static 'img/logo.png' %}">
+        </div>
+        <div class="col-md-4 col-sm-8 col-md-offset-4 col-sm-offset-2">
+            <div class='jobseeker-signup' style="display :block;">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" value="jobseeker" name="type" hidden>
+                    Username(email) : <input type="text" class="form-control input-lg" placeholder="UserName" name="username" required>
+                    {% if jobUserForm.username %}
+                        <div class='error'>
+                            <span class='error-body'>
+                            <ul class='errorlist'>
+                            {{jobUserForm.username}}
+                            </ul>
+                            </span>
+                        </div>
+                    {% endif %}
+                    Password : <input type="password" class="form-control input-lg" placeholder="Password" name="password" required>
+                    Password Confirm : <input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm_password" required>
+                    {% if jobUserForm.confirm_password %}
+                        <div class='error'>
+                            <span class='error-body'>
+                            <ul class='errorlist'>
+                            {{jobUserForm.confirm_password}}
+                            </ul>
+                            </span>
+                        </div>
+                    {% endif %}
+                    First Name : <input type="text" class="form-control input-lg" placeholder="First Name" name="firstName" required>
+                    Last Name : <input type="text" class="form-control input-lg" placeholder="Last Name" name="lastName" required>
+                    Age : <input type="number" class="form-control input-lg" placeholder="Age" name="age" required>
+                    Gender :
+                    <ul class="filter-list">
+                        <li>
+                            <input id="gender-1" class="checkbox-custom" name="gender" type="radio" value="male" required>
+                            <label for="gender-1" class="internship checkbox-custom-label">Male</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="gender-2" name="gender" value="female" class="checkbox-custom" required>
+                            <label for="gender-2" class="internship checkbox-custom-label">Female</label>
+                        </li>
+                    </ul><br>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </form>
+            </div>
+            <div class='company-signup' style="display :none;">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="text" value="company" name="type" hidden>
+                        Username(email) :<input type="text" class="form-control input-lg" placeholder="UserName" name="username" required>
+                        {% if compUserForm.username %}
+                            <div class='error'>
+                                <span class='error-body'>
+                                <ul class='errorlist'>
+                                {{compUserForm.username}}
+                                </ul>
+                                </span>
+                            </div>
+                        {% endif %}
+                        Password : <input type="password" class="form-control input-lg" placeholder="Password" name="password" required>
+                        Password Confirm : <input type="password" class="form-control input-lg" placeholder="Confirm Password" name="confirm_password" required>
+                        {% if compUserForm.confirm_password %}
+                            <div class='error'>
+                                <span class='error-body'>
+                                <ul class='errorlist'>
+                                {{compUserForm.confirm_password}}
+                                </ul>
+                                </span>
+                            </div>
+                        {% endif %}
+                        Company Name : <input type="text" class="form-control input-lg" placeholder="Company Name" name="name" required>
+                        Date Of Foundation : <input type="number" class="form-control input-lg" placeholder="Date Of Foundation" name="dateOfFoundation" required>
+                        {% if compProfileForm.dateOfFoundation %}
+                            <div class='error'>
+                                <span class='error-body'>
+                                <ul class='errorlist'>
+                                {{compProfileForm.dateOfFoundation}}
+                                </ul>
+                                </span>
+                            </div>
+                        {% endif %}
+                        Address :<textarea name="address" id="address" class="form-control input-lg" placeholder="Address" cols="30" rows="5" required></textarea>
+                        Phone Number : <input type="text" class="form-control input-lg" placeholder="Phone Number" name="phoneNumber" required>
+                        {% if compProfileForm.phoneNumber %}
+                            <div class='error'>
+                                <span class='error-body'>
+                                <ul class='errorlist'>
+                                {{compProfileForm.phoneNumber}}
+                                </ul>
+                                </span>
+                            </div>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock form %}
