@@ -6,13 +6,14 @@
         <title>Jober Desk | Responsive Job Portal Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+        
+        {% load static %}
         <!-- All Plugin Css --> 
-		<link rel="stylesheet" href="css/plugins.css">
+		<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 		
 		<!-- Style & Common Css --> 
-		<link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     </head>
 	
@@ -27,16 +28,22 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="index.html"><img src="img/logo.png" class="logo" alt=""></a>
+					<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt=""></a>
 				</div>
 				<!-- End Header Navigation -->
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-							<li><a href="index.html">Home</a></li> 
-							<li><a href="login.html">Login</a></li>
-							<li><a href="companies.html">Companies</a></li> 
+                            <li><a href="{% url 'index' %}">Home</a></li> 
+                            
+                            {% if request.user.is_authenticated %}
+                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                            {% endif %}			
+                            <li><a href="companies.html">Companies</a></li> 
+                            <li><a href="{% url 'company:profile'%}">Profile</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse</a>
 								<ul class="dropdown-menu animated fadeOutUp" style="display: none; opacity: 1;">
@@ -46,8 +53,8 @@
 								</ul>
 							</li>
 						</ul>
+                    </div>   
 				</div><!-- /.navbar-collapse -->
-			</div>   
 		</nav>
 		<!-- Navigation End  -->
 	
@@ -68,18 +75,18 @@
 				<div class="row">
 					<div class="basic-information">
 						<div class="col-md-3 col-sm-3">
-						 <img src="img/microsoft.png" alt="" class="img-responsive">
+						 <img src="{{company.companyprofile.url}}" alt="" class="img-responsive">
 						</div>
 						<div class="col-md-9 col-sm-9">
 							<div class="profile-content">
-									<h2>Microsoft<span>Internet and computer software</span></h2>
-									<p>Now Hiring(102)</p>
+									<h2>{{company.companyprofile.name}}<span>Internet and computer software</span></h2>
 									<ul class="information">
-										<li><span>Address:</span>Menlo Park, CA</li>
-										<li><span>Website:</span>Google.com</li>
+										<li><span>Address:</span>{{company.companyprofile.address}}</li>
+										<li><span>Website:</span>{{company.companyprofile.website}}</li>
 										<li><span>Employee:</span>50,000 - 70,000 employer</li>
-										<li><span>Mail:</span>info@google.com</li>
-										<li><span>From:</span>1998</li>
+                                        <li><span>Mail:</span>{{company.user.username}}</li>
+                                        <li><span>Phone Number:</span>{{company.companyprofile.phoneNumber}}</li>
+                                        <li><span>From:</span>{{company.companyprofile.dateOfFoundation}}</li>
 									</ul>
 								</div>
 							</div>
@@ -232,10 +239,10 @@
 			</div>
 		</footer>
 		 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-		<script src="js/bootsnav.js"></script>
-		<script src="js/main.js"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.min' %}.js"></script>
+		<script src="{% static 'js/bootstrap.min' %}.js"></script>
+		<script type="text/javascript" src="{% static 'js/owl.carousel' %}.min.js"></script>
+		<script src="{% static 'js/bootsnav.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
     </body>
 </html>

@@ -6,7 +6,13 @@ from . import models
 class SignUpForm(forms.ModelForm):
     class Meta:
         model = models.CompanyProfile
-        fields = [ 'name' ,'address' ,'phoneNumber' , 'dateOfFoundation' ]
+        fields = [ 'name' ,'phoneNumber' , 'dateOfFoundation' ,'address' ]
+        widgets={
+            'name'             : forms.TextInput(attrs={'class':"form-control input-lg" ,'placeholder':"Company Name" ,'name':"name"}),
+            'phoneNumber'      : forms.TextInput(attrs={'class':"form-control input-lg" ,'placeholder':"Phone Number" ,'name':"phoneNumber"}),
+            'dateOfFoundation' : forms.NumberInput(attrs={'class':"form-control input-lg" ,'placeholder':"dateOfFoundation" ,'name':"dateOfFoundation"}),
+            'address'          : forms.Textarea(attrs={"name":"address" ,'class':"form-control input-lg" ,'placeholder':"Address" ,'cols':"30" ,'rows':"5"}),
+        }   
 
     def clean_name(self):
         data = self.cleaned_data["name"]
@@ -32,30 +38,5 @@ class SignUpForm(forms.ModelForm):
     def clean_dateOfFoundation(self):
         data = self.cleaned_data["dateOfFoundation"]
 
-        return data
-    
-class SignUpUser(forms.Form):
-    username = forms.CharField(max_length=300)
-    password = forms.CharField(max_length=300)
-    confirm_password = forms.CharField(max_length=300)
-
-    def clean_username(self):
-        data = self.cleaned_data["username"]
-        user = User.objects.filter(username=data).count()
-        if user :
-            raise forms.ValidationError('This username is already exist.')
-        return data
-    
-    def clean_password(self):
-        data = self.cleaned_data["password"]
-        
-        return data
-    
-    def clean_confirm_password(self):
-        data = self.cleaned_data["confirm_password"]
-        password = self.cleaned_data.get('password')
-        if data != password:
-            raise forms.ValidationError('Password doesn\'t match.')  
-        
         return data
     

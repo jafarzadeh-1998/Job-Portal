@@ -6,13 +6,13 @@
         <title>Jober Desk | Responsive Job Portal Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+		{% load static %}
         <!-- All Plugin Css --> 
-		<link rel="stylesheet" href="css/plugins.css">
+		<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 		
 		<!-- Style & Common Css --> 
-		<link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     </head>
 	
@@ -27,7 +27,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="index.html"><img src="img/logo.png" class="logo" alt=""></a>
+					<a class="navbar-brand" href="index.html"><img src="{% static 'img/logo.png' %}" class="logo" alt=""></a>
 				</div>
 				<!-- End Header Navigation -->
 
@@ -52,7 +52,7 @@
 		<!-- Navigation End  -->
 		
 		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<section class="main-banner" style="background:#242c36 url(img/slider-01.jpg) no-repeat">
+		<section class="main-banner" style="background:#242c36 url({% static 'img/slider-01.jpg' %}) no-repeat">
 			<div class="container">
 				<div class="caption">
 					<h2>Build Your Career</h2>
@@ -195,7 +195,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
 								<div class="company-logo">
-									<img src="img/google.png" class="img-responsive" alt="" />
+									<img src="{% static 'img/google.png' %}" class="img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">
@@ -211,7 +211,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
 								<div class="company-logo">
-									<img src="img/microsoft.png" class="img-responsive" alt="" />
+									<img src="{% static 'img/microsoft.png' %}" class="img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">
@@ -227,7 +227,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
 								<div class="company-logo">
-									<img src="img/apple.png" class="img-responsive" alt="" />
+									<img src="{% static 'img/apple.png' %}" class="img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">
@@ -243,7 +243,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
 								<div class="company-logo">
-									<img src="img/wipro.png" class="img-responsive" alt="" />
+									<img src="{% static 'img/wipro.png' %}" class="img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">
@@ -259,7 +259,7 @@
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
 								<div class="company-logo">
-									<img src="img/twitter.png" class="img-responsive" alt="" />
+									<img src="{% static 'img/twitter.png' %}" class="img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">
@@ -284,7 +284,7 @@
 						<div id="testimonial-slider" class="owl-carousel">
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/client-1.jpg" alt="">
+									<img src="{% static 'img/client-1' %}.jpg" alt="">
 								</div>
 								<p class="description">
 									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
@@ -295,7 +295,7 @@
 
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/client-2.jpg" alt="">
+									<img src="{% static 'img/client-2' %}.jpg" alt="">
 								</div>
 								<p class="description">
 									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
@@ -306,7 +306,7 @@
 							
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/client-3.jpg" alt="">
+									<img src="{% static 'img/client-3' %}.jpg" alt="">
 								</div>
 								<p class="description">
 									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
@@ -317,7 +317,7 @@
 							
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/client-4.jpg" alt="">
+									<img src="{% static 'img/client-4' %}.jpg" alt="">
 								</div>
 								<p class="description">
 									" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem commodi eligendi facilis itaque minus non odio, quaerat ullam unde voluptatum? "
@@ -405,10 +405,10 @@
 					<div class="col-md-4 col-sm-4">
 						<div class="left-widget-sidebar">
 							<div class="card-widget bg-white user-card">
-								<div class="u-img img-cover" style="background-image: url(img/bg-1.jpg);background-size:cover;"></div>
+								<div class="u-img img-cover" style="background-image: url({% static 'img/bg-1.jpg' %});background-size:cover;"></div>
 								<div class="u-content">
 									<div class="avatar box-80">
-										<img class="img-responsive img-circle img-70 shadow-white" src="img/avatar3.jpg" alt="">
+										<img class="img-responsive img-circle img-70 shadow-white" src="{% static 'img/avatar3.jpg' %}" alt="">
 										<i class="fa fa-circle-o fa-green"></i>
 									</div>
 									<h5>Sazzel Shi</h5>
@@ -429,10 +429,10 @@
 					<div class="col-md-4 col-sm-4">
 						<div class="left-widget-sidebar">
 							<div class="card-widget bg-white user-card">
-								<div class="u-img img-cover" style="background-image: url(img/bg-2.jpg);background-size:cover;"></div>
+								<div class="u-img img-cover" style="background-image: url({% static 'img/bg-2.jpg' %});background-size:cover;"></div>
 								<div class="u-content">
 									<div class="avatar box-80">
-										<img class="img-responsive img-circle img-70 shadow-white" src="img/avatar2.jpg" alt="">
+										<img class="img-responsive img-circle img-70 shadow-white" src="{% static 'img/avatar2.jpg' %}" alt="">
 										<i class="fa fa-circle-o fa-green"></i>
 									</div>
 									<h5>Daniel Dezox</h5>
@@ -453,10 +453,10 @@
 					<div class="col-md-4 col-sm-4">
 						<div class="left-widget-sidebar">
 							<div class="card-widget bg-white user-card">
-								<div class="u-img img-cover" style="background-image: url(img/bg-3.jpg);background-size:cover;"></div>
+								<div class="u-img img-cover" style="background-image: url({% static 'img/bg-3.jpg' %});background-size:cover;"></div>
 								<div class="u-content">
 									<div class="avatar box-80">
-										<img class="img-responsive img-circle img-70 shadow-white" src="img/avatar1.jpg" alt="">
+										<img class="img-responsive img-circle img-70 shadow-white" src="{% static 'img/avatar1.jpg' %}" alt="">
 										<i class="fa fa-circle-o fa-green"></i>
 									</div>
 									<h5>Silp Sizzer</h5>
@@ -556,10 +556,10 @@
 			</div>
 		</footer>
 		 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-		<script src="js/bootsnav.js"></script>
-		<script src="js/main.js"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.min' %}.js"></script>
+		<script src="{% static 'js/bootstrap.min' %}.js"></script>
+		<script type="text/javascript" src="{% static 'js/owl.carousel' %}.min.js"></script>
+		<script src="{% static 'js/bootsnav.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
     </body>
 </html>
