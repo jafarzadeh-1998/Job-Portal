@@ -21,19 +21,19 @@ class JobSeekerProfile(models.Model):
     firstName    = models.CharField(max_length=100)
     lastName     = models.CharField(max_length=100)
     GENDER       = (
-                    ('male'  , 'مرد'),
-                    ('female', 'زن'),
+                    ('male'  , 'Male'),
+                    ('female', 'Female'),
                 )
     gender       = models.CharField(max_length=6 ,choices=GENDER)
     age          = models.IntegerField()
     phoneNumber = models.CharField(max_length=50 ,null=True ,blank=True)
     GRADE_CHOICE = (
-                        ('dep' ,'دیپلم'),
-                        ('bc', 'کارشناسی'),
-                        ('ms', 'کارشناسی ارشد'),
-                        ('phd', 'دکتری'),
+                        ('Diploma' ,'Diploma'),
+                        ('Bachelor', 'Bachelor'),
+                        ('Master', 'Master'),
+                        ('PhD', 'PhD'),
                 )
-    grade        = models.CharField( max_length=3 ,choices=GRADE_CHOICE)
+    grade        = models.CharField( max_length=8 ,choices=GRADE_CHOICE)
     resume       = models.FileField(upload_to=pathUpload , max_length=100 ,blank=True ,null=True)
     JOB_FIELD = (
         ('software_developer' ,'Software Developer'),

@@ -3,16 +3,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Jober Desk | Responsive Job Portal Template</title>
+        <title>Jober Desk | Edit Profile</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+        
+        {% load static %}
         <!-- All Plugin Css --> 
-		<link rel="stylesheet" href="css/plugins.css">
+		<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 		
 		<!-- Style & Common Css --> 
-		<link rel="stylesheet" href="css/common.css">
-        <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     </head>
 	
@@ -27,16 +28,16 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="index.html"><img src="img/logo.png" class="logo" alt=""></a>
+					<a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" class="logo" alt=""></a>
 				</div>
 				<!-- End Header Navigation -->
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-							<li><a href="index.html">Home</a></li> 
-							<li><a href="login.html">Login</a></li>
-							<li><a href="companies.html">Companies</a></li> 
+							<li><a href="{% url 'index' %}">Home</a></li> 
+							<li><a href="{% url 'login' %}">Login</a></li>
+							<li><a href="{% url 'company:list' %}">Companies</a></li> 
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse</a>
 								<ul class="dropdown-menu animated fadeOutUp" style="display: none; opacity: 1;">
@@ -68,18 +69,20 @@
 					<div class="row">
 						<div class="basic-information">
 							<div class="col-md-3 col-sm-3">
-							 <img src="img/user.jpg" alt="" class="img-responsive">
+							 <img src="{{profile.photo.url}}" alt="" class="img-responsive">
 							</div>
 							<div class="col-md-9 col-sm-9">
 								<div class="profile-content">
-										<h2>Daniel Duke<span>Web designer</span></h2>
-										<p>Soft Techi Infoteck Pvt.</p>
+										<h2>{{profile.firstName}} {{profile.lastName}}<span>{{profile.jobSeekField}}</span></h2>										
 										<ul class="information">
-											<li><span>Name:</span>Daniel Duke</li>
-											<li><span>Email:</span>daniel-duke@gmail.com</li>
-											<li><span>Mobile:</span>+91 548 576 8579</li>
-											<li><span>Company:</span>Soft Techi Infoteck Pvt.</li>
-											<li><span>Date of Birth:</span>10 July 1990</li>
+											<li><span>First Name:</span>{{profile.firstName}}</li>
+											<li><span>Last  Name:</span>{{profile.lastName}}</li>
+											<li><span>Email:</span>{{profile.jobseeker.user.username}}</li>
+											<li><span>Mobile:</span>{{profile.phoneNumber}}</li>
+                                            <li><span>Age:</span>{{profile.age}}</li>
+                                            <li><span>Grade:</span>{{profile.grade}}</li>
+                                            <li><span>Resume:</span><a href="{{profile.resume.url}}">{{profile.resume}}</a></li>
+                                            
 										</ul>
 									</div>
 								</div>
@@ -203,10 +206,10 @@
 			</div>
 		</footer>
 		 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-		<script src="js/bootsnav.js"></script>
-		<script src="js/main.js"></script>
+		<script type="text/javascript" src="{% static 'js/jquery.min' %}.js"></script>
+		<script src="{% static 'js/bootstrap.min' %}.js"></script>
+		<script type="text/javascript" src="{% static 'js/owl.carousel' %}.min.js"></script>
+		<script src="{% static 'js/bootsnav.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
     </body>
 </html>
