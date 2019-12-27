@@ -3,8 +3,14 @@ from django.contrib.auth.models import User
 
 import os
 
-def pathUpload(instance, filename):
+def profilePathUpload(instance, filename):
     fullFilename = "profile-" + instance.jobseeker.user.username + "-" + filename
+    folderName = instance.jobseeker.user.username
+    path = os.path.join('Job Seeker', folderName)
+    return os.path.join(path, fullFilename)
+
+def resumePathUpload(instance, filename):
+    fullFilename = "resume-" + instance.jobseeker.user.username + "-" + filename
     folderName = instance.jobseeker.user.username
     path = os.path.join('Job Seeker', folderName)
     return os.path.join(path, fullFilename)
@@ -17,7 +23,7 @@ class JobSeeker(models.Model):
 
 class JobSeekerProfile(models.Model):
     jobseeker    = models.OneToOneField(JobSeeker, on_delete=models.CASCADE)
-    photo        = models.ImageField(upload_to=pathUpload ,null=True ,blank=True)
+    photo        = models.ImageField(upload_to=profilePathUpload ,null=True ,blank=True)
     firstName    = models.CharField(max_length=100)
     lastName     = models.CharField(max_length=100)
     GENDER       = (
@@ -34,7 +40,7 @@ class JobSeekerProfile(models.Model):
                         ('PhD', 'PhD'),
                 )
     grade        = models.CharField( max_length=8 ,choices=GRADE_CHOICE)
-    resume       = models.FileField(upload_to=pathUpload , max_length=100 ,blank=True ,null=True)
+    resume       = models.FileField(upload_to=resumePathUpload , max_length=100 ,blank=True ,null=True)
     JOB_FIELD = (
         ('software_developer' ,'Software Developer'),
         ('backend_developer'  ,'Backend Developer'),

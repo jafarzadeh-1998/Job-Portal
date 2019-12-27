@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('company/', include('Company.urls')),
     path('jobseeker/', include('JobSeeker.urls')),
+    path('poster/' ,include('Poster.urls')),
     path('login/' ,views.Login.as_view() ,name="login"),
     path('logout/' ,views.Logout ,name="logout"),
     path('signup/' ,views.signup.as_view() ,name="signup"),
