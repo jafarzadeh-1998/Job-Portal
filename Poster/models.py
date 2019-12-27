@@ -25,6 +25,7 @@ class Poster(models.Model):
         ('mechanic'           ,'Mechanic Engineer'),
     )
     poster_field = models.CharField(max_length=50 ,choices=POSTER_FIELD)
+    jobseeker = models.ManyToManyField("JobSeeker.JobSeeker", )
 
     def __str__(self):
         return self.company.user.username+" - "+self.title
