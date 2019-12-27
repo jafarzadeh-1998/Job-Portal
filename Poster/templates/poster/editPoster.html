@@ -2,14 +2,14 @@
 {% block content %}
 <section class="jobs">
     <div class="container">
-        <div class="row heading">
-            <h2>Post Your Job</h2>
-        </div>
         <div class="col-md-4 col-sm-8 col-md-offset-4 col-sm-offset-2">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {% if photoState %}
+                    <img src='{{photo.url}}' alt="" class="img-responsive">
+                {% endif %}
                 {{form.as_p}}
-                <button type="submit" class="btn btn-primary">Rocord</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </form>
         </div>
     </div>

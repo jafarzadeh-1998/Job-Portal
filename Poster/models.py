@@ -6,7 +6,7 @@ import os
 def pathUpload(instance, filename):
     fullFilename = "poster-" + instance.company.user.username + "-" + filename
     folderName = instance.company.user.username
-    path = os.path.join('Job Seeker', folderName)
+    path = os.path.join('Poster', folderName)
     return os.path.join(path, fullFilename)
 
 
@@ -27,7 +27,7 @@ class Poster(models.Model):
     poster_field = models.CharField(max_length=50 ,choices=POSTER_FIELD)
 
     def __str__(self):
-        return company.user.username+" - "+self.title
+        return self.company.user.username+" - "+self.title
     
     def get_absolute_url(self):
         return reverse("poster:detail", kwargs={"pk": self.pk})
